@@ -49,4 +49,13 @@ public abstract class Equipment {
     public void setMaterial(Material material) {
         this.material = material;
     }
+
+    @Override
+    public String toString() {
+        return "Equipment{" +
+                "price=" + price +
+                ", weight=" + weight +
+                ", material=" + material +
+                '}';
+    }
 }

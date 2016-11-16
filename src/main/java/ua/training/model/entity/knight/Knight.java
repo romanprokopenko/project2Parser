@@ -18,6 +18,20 @@ public class Knight {
         equippedItems = new ArrayList<>();
     }
 
+    public double getEquipmentPrice() {
+        double sum = 0;
+        for (Equipment e:
+             equippedItems) {
+            sum += e.getPrice();
+        }
+        return sum;
+    }
+
+    public List<Equipment> getSortedEquipmentList() {
+        equippedItems.sort(new EquipmentWeightComparator());
+        return equippedItems;
+    }
+
     public void equipHead(Head head){
         putEquipment(head);
     }
@@ -58,4 +72,5 @@ public class Knight {
         }
         throw new NullPointerException("no " + clazz.getName() + " equipped");
     }
+
 }

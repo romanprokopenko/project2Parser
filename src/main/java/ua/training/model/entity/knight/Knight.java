@@ -1,15 +1,20 @@
 package ua.training.model.entity.knight;
 
-import ua.training.model.entity.Equipment;
-import ua.training.model.entity.head.Head;
-import ua.training.model.entity.leg.Leg;
-import ua.training.model.entity.torso.Torso;
+import ua.training.model.entity.equipment.Equipment;
+import ua.training.model.entity.equipment.arm.Arm;
+import ua.training.model.entity.equipment.head.Head;
+import ua.training.model.entity.equipment.leg.Leg;
+import ua.training.model.entity.equipment.torso.Torso;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 /**
- * Created by Graffit on 16.11.2016.
+ * Class describes knight entity.
+ * Contains collection of knight's equipment
+ *
+ * @author Roman Prokopenko
  */
 public class Knight {
     private List<Equipment> equippedItems;
@@ -18,7 +23,12 @@ public class Knight {
         equippedItems = new ArrayList<>();
     }
 
-    public double getEquipmentPrice() {
+    /**
+     * Calculates summary price of knight's equipment
+     *
+     * @return equipment price
+     */
+    public Double getEquipmentPrice() {
         double sum = 0;
         for (Equipment e:
              equippedItems) {
@@ -27,8 +37,28 @@ public class Knight {
         return sum;
     }
 
-    public List<Equipment> getSortedEquipmentList() {
+    /**
+     * finds equipment which price corresponds to bounds
+     *
+     * @param minimumPrice lower bound
+     * @param maximumPrice upper bound
+     * @return List of equipment
+     */
+    public List<Equipment> findEquipment(double minimumPrice, double maximumPrice) {
+        return equippedItems.stream()
+                            .filter((s) -> ((minimumPrice <= s.getPrice()) && (s.getPrice() <= maximumPrice)))
+                            .collect(Collectors.toList());
+    }
+
+    /**
+     * Sorts equipment list using {@link EquipmentWeightComparator}
+     */
+    public void sortEquipmentByWeight() {
         equippedItems.sort(new EquipmentWeightComparator());
+    }
+
+    /*getters and setters*/
+    public List<Equipment> getEquippedItems() {
         return equippedItems;
     }
 
@@ -48,10 +78,29 @@ public class Knight {
         return (Torso) unequip(Torso.class);
     }
 
+    public void equipArm(Arm arm) {
+        putEquipment(arm);
+    }
+
+    public Arm unequipArm() {
+        return (Arm) unequip(Arm.class);
+    }
+
     public void equipLeg(Leg leg){
         putEquipment(leg);
     }
 
+    public Leg uneqipLeg() {
+        return (Leg) unequip(Leg.class);
+    }
+
+    /**
+     * Adds new equipment item to equipment collection. Because there can be only
+     * one instance of each type in collection, method checks collection. If collection
+     * already contains item of same type, replaces it with new item
+     *
+     * @param item item to put in collection
+     */
     private void putEquipment(Equipment item) {
         for (int i = 0; i < equippedItems.size(); i++) {
             if (equippedItems.get(i).getClass().isInstance(item)) {
@@ -62,15 +111,29 @@ public class Knight {
         equippedItems.add(item);
     }
 
-    private Equipment unequip(Class clazz) {
+    /**
+     * Removes and returns item of defined type from equipment collection.
+     * If there is no suitable item in collection throws {@link NoSuchItemTypeException}
+     *
+     * @param equipmentClass type of item to remove
+     * @return removed item
+     */
+    private Equipment unequip(Class equipmentClass)  {
         for (int i = 0; i < equippedItems.size(); i++) {
-            if (equippedItems.get(i).getClass().isAssignableFrom(clazz)) {
+            if (equippedItems.get(i).getClass().isAssignableFrom(equipmentClass)) {
                 Equipment result = equippedItems.get(i);
                 equippedItems.remove(i);
                 return result;
             }
         }
-        throw new NullPointerException("no " + clazz.getName() + " equipped");
+        String exceptionMessage = equipmentClass.getName() + " not equipped";
+        throw new NoSuchItemTypeException(exceptionMessage);
     }
 
+    @Override
+    public String toString() {
+        return "Knight{" +
+                "equippedItems=" + equippedItems +
+                '}';
+    }
 }

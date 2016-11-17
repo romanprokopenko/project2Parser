@@ -30,8 +30,8 @@ public class Knight {
      */
     public Double getEquipmentPrice() {
         double sum = 0;
-        for (Equipment e:
-             equippedItems) {
+        for (Equipment e :
+                equippedItems) {
             sum += e.getPrice();
         }
         return sum;
@@ -46,8 +46,8 @@ public class Knight {
      */
     public List<Equipment> findEquipment(double minimumPrice, double maximumPrice) {
         return equippedItems.stream()
-                            .filter((s) -> ((minimumPrice <= s.getPrice()) && (s.getPrice() <= maximumPrice)))
-                            .collect(Collectors.toList());
+                .filter((s) -> ((minimumPrice <= s.getPrice()) && (s.getPrice() <= maximumPrice)))
+                .collect(Collectors.toList());
     }
 
     /**
@@ -62,11 +62,11 @@ public class Knight {
         return equippedItems;
     }
 
-    public void equipHead(Head head){
+    public void equipHead(Head head) {
         putEquipment(head);
     }
 
-    public Head unequipHead(){
+    public Head unequipHead() {
         return (Head) unequip(Head.class);
     }
 
@@ -86,7 +86,7 @@ public class Knight {
         return (Arm) unequip(Arm.class);
     }
 
-    public void equipLeg(Leg leg){
+    public void equipLeg(Leg leg) {
         putEquipment(leg);
     }
 
@@ -118,7 +118,7 @@ public class Knight {
      * @param equipmentClass type of item to remove
      * @return removed item
      */
-    private Equipment unequip(Class equipmentClass)  {
+    private Equipment unequip(Class equipmentClass) {
         for (int i = 0; i < equippedItems.size(); i++) {
             if (equippedItems.get(i).getClass().isAssignableFrom(equipmentClass)) {
                 Equipment result = equippedItems.get(i);

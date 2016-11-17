@@ -1,11 +1,13 @@
 package ua.training.model.entity.knight;
 
-import ua.training.model.entity.Equipment;
+import ua.training.model.entity.equipment.Equipment;
 
 import java.util.Comparator;
 
 /**
- * Created by Graffit on 16.11.2016.
+ * Comparator of equipment's weight
+ *
+ * @author Roman Prokopenko
  */
 public class EquipmentWeightComparator implements Comparator<Equipment> {
     @Override

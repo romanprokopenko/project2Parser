@@ -1,13 +1,12 @@
 package ua.training.control;
 
+import ua.training.control.init.InitEquipment;
 import ua.training.model.Model;
-import ua.training.model.entity.Equipment;
-import ua.training.model.entity.Material;
-import ua.training.model.entity.head.Head;
-import ua.training.model.entity.head.HeadType;
+import ua.training.model.entity.equipment.arm.Arm;
+import ua.training.model.entity.equipment.head.Head;
 import ua.training.model.entity.knight.Knight;
-import ua.training.model.entity.torso.Torso;
-import ua.training.model.entity.torso.TorsoType;
+import ua.training.model.entity.equipment.leg.Leg;
+import ua.training.model.entity.equipment.torso.Torso;
 import ua.training.view.View;
 
 
@@ -43,23 +42,29 @@ public class Control {
         this.view = view;
     }
 
-    class newhead extends Head{
-        public newhead(double price, double weight, Material material, HeadType headType) {
-            super(price, weight, material, headType);
-        }
-    }
-
     public void processUser() {
-        Equipment head1 = new Head(9.99, 10, Material.IRON, HeadType.GREAT);
-        Head head2 = new Head(8.88, 10, Material.IRON, HeadType.GREAT);
-        Torso torso1 = new Torso(1, 50, Material.LEATHER, TorsoType.BRIGANDINE);
-        Knight knight = new Knight();
-        knight.equipHead((Head) head1);
-        knight.equipHead(head2);
 
-        System.out.println(knight.unequipHead().getPrice());
-        //knight.unequipHead();
-        //knight.unequipTorso();
+        /*Knight instance initialization*/
+        Knight knight = new Knight();
+        knight.equipHead((Head) InitEquipment.HEAD.getEquipment());
+        knight.equipTorso((Torso) InitEquipment.TORSO.getEquipment());
+        knight.equipArm((Arm) InitEquipment.ARM.getEquipment());
+        knight.equipLeg((Leg) InitEquipment.LEG.getEquipment());
+
+        view.printMessage(View.UNSORTED_MESSAGE);
+        view.printMessage(knight.toString());
+
+        view.printMessage(View.SORTED_MESSAGE);
+        knight.sortEquipmentByWeight();
+        view.printMessage(knight.toString());
+
+        view.printMessage(View.PRICE_MESSAGE);
+        view.printNumberFormatted(knight.getEquipmentPrice());
+
+        view.printMessage(View.FIND_MESSAGE);
+        view.printMessage(knight.findEquipment(20, 100).toString());
+
     }
+
 }
 

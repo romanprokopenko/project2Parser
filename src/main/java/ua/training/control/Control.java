@@ -52,7 +52,6 @@ public class Control {
         knight.equipTorso((Torso) InitEquipment.TORSO.getEquipment());
         knight.equipArm((Arm) InitEquipment.ARM.getEquipment());
         knight.equipLeg((Leg) InitEquipment.LEG.getEquipment());
-
         view.printMessage(View.UNSORTED_MESSAGE);
         view.printMessage(knight.toString());
 

@@ -117,10 +117,10 @@ public class Knight {
      * Removes and returns item of defined type from equipment collection.
      * If there is no suitable item in collection throws {@link NoSuchItemTypeException}
      *
-     * @param equipmentClass type of item to remove
+     * @param equipmentClass type of item to remove. Must extend Equipment
      * @return removed item
      */
-    private Equipment unequip(Class equipmentClass) {
+    private Equipment unequip(Class<? extends Equipment> equipmentClass) {
         for (int i = 0; i < equippedItems.size(); i++) {
             if (equipmentClass.isAssignableFrom(equippedItems.get(i).getClass())) {
                 Equipment result = equippedItems.get(i);

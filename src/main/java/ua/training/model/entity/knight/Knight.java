@@ -46,7 +46,8 @@ public class Knight {
      */
     public List<Equipment> findEquipment(double minimumPrice, double maximumPrice) {
         return equippedItems.stream()
-                .filter((s) -> ((minimumPrice <= s.getPrice()) && (s.getPrice() <= maximumPrice)))
+                .filter((s) -> ((minimumPrice <= s.getPrice()) &&
+                                (s.getPrice() <= maximumPrice)))
                 .collect(Collectors.toList());
     }
 
@@ -103,7 +104,8 @@ public class Knight {
      */
     private void putEquipment(Equipment item) {
         for (int i = 0; i < equippedItems.size(); i++) {
-            if (equippedItems.get(i).getClass().isInstance(item)) {
+            if (equippedItems.get(i).getClass().isInstance(item)
+                    || item.getClass().isInstance(equippedItems.get(i))) {
                 equippedItems.set(i, item);
                 return;
             }
@@ -120,7 +122,7 @@ public class Knight {
      */
     private Equipment unequip(Class equipmentClass) {
         for (int i = 0; i < equippedItems.size(); i++) {
-            if (equippedItems.get(i).getClass().isAssignableFrom(equipmentClass)) {
+            if (equipmentClass.isAssignableFrom(equippedItems.get(i).getClass())) {
                 Equipment result = equippedItems.get(i);
                 equippedItems.remove(i);
                 return result;

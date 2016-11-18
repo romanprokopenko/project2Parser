@@ -20,7 +20,7 @@ import static org.junit.Assert.*;
  */
 public class KnightTest {
 
-    Knight actualKnight;
+    private Knight actualKnight;
     @Before
     public void initialize() {
         actualKnight = new Knight();

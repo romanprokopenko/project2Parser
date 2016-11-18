@@ -2,8 +2,10 @@ package ua.training.control;
 
 import ua.training.control.init.InitEquipment;
 import ua.training.model.Model;
+import ua.training.model.entity.equipment.Material;
 import ua.training.model.entity.equipment.arm.Arm;
 import ua.training.model.entity.equipment.head.Head;
+import ua.training.model.entity.equipment.head.HeadType;
 import ua.training.model.entity.knight.Knight;
 import ua.training.model.entity.equipment.leg.Leg;
 import ua.training.model.entity.equipment.torso.Torso;
@@ -63,8 +65,6 @@ public class Control {
 
         view.printMessage(View.FIND_MESSAGE);
         view.printMessage(knight.findEquipment(20, 100).toString());
-
     }
-
 }
 

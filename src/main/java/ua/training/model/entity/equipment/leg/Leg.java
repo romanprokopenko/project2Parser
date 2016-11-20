@@ -15,8 +15,20 @@ public class Leg extends Equipment {
      */
     private LegType legType;
 
+    /**
+     * Shows if there are boots under the leg item
+     */
     private boolean areBootsEquipped;
 
+    /**
+     * Constructor with parameters
+     *
+     * @param price price of item
+     * @param weight weight of item
+     * @param material item's material
+     * @param legType leg item type
+     * @param areBootsEquipped shows if boots are also equipped
+     */
     public Leg(double price, double weight, Material material, LegType legType, boolean areBootsEquipped) {
         super(price, weight, material);
         this.legType = legType;

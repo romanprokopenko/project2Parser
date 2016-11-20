@@ -59,7 +59,8 @@ public class KnightTest {
                                 InitEquipment.TORSO.getEquipment().getPrice() +
                                 InitEquipment.ARM.getEquipment().getPrice() +
                                 InitEquipment.LEG.getEquipment().getPrice();
-        Assert.assertTrue(expectedPrice == actualPrice);
+        double delta = 1e-6;
+        Assert.assertEquals(expectedPrice, actualPrice, delta);
     }
 
 }

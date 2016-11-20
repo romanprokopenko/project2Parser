@@ -1,7 +1,9 @@
 package ua.training.model.entity.equipment;
 
 /**
- * Created by Roman Prokopenko on 16.11.2016.
+ * Materials from which equipment is made
+ *
+ * @author Roman Prokopenko
  */
 public enum Material {
     LEATHER, IRON, STEEL

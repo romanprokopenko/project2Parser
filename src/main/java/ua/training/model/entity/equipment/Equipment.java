@@ -23,6 +23,13 @@ public abstract class Equipment {
      */
     private Material material;
 
+    /**
+     * Constructor with parameters
+     *
+     * @param price price of item
+     * @param weight weight of item
+     * @param material item's material
+     */
     public Equipment(double price, double weight, Material material) {
         this.price = price;
         this.weight = weight;

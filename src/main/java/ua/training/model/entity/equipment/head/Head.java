@@ -20,6 +20,14 @@ public class Head extends Equipment {
      */
     private boolean hasVisor;
 
+    /**
+     * Constructor with parameters
+     *
+     * @param price price of item
+     * @param weight weight of item
+     * @param material item's material
+     * @param headType head item type
+     */
     public Head(double price, double weight, Material material, HeadType headType) {
         super(price, weight, material);
         this.headType = headType;

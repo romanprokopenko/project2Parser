@@ -15,6 +15,14 @@ public class Torso extends Equipment {
      */
     private TorsoType torsoType;
 
+    /**
+     * Constructor with parameters
+     *
+     * @param price price of item
+     * @param weight weight of item
+     * @param material item's material
+     * @param torsoType torso item type
+     */
     public Torso(double price, double weight, Material material, TorsoType torsoType) {
         super(price, weight, material);
         this.torsoType = torsoType;

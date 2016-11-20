@@ -17,8 +17,15 @@ import java.util.stream.Collectors;
  * @author Roman Prokopenko
  */
 public class Knight {
+    /**
+     * Collection of knight's equipment
+     */
     private List<Equipment> equippedItems;
 
+    /**
+     * Default constructor. Initialize list of equipment with empty
+     * ArrayList
+     */
     public Knight() {
         equippedItems = new ArrayList<>();
     }
@@ -29,12 +36,7 @@ public class Knight {
      * @return equipment price
      */
     public Double getEquipmentPrice() {
-        double sum = 0;
-        for (Equipment e :
-                equippedItems) {
-            sum += e.getPrice();
-        }
-        return sum;
+        return equippedItems.stream().mapToDouble(Equipment::getPrice).sum();
     }
 
     /**
@@ -47,15 +49,23 @@ public class Knight {
     public List<Equipment> findEquipment(double minimumPrice, double maximumPrice) {
         return equippedItems.stream()
                 .filter((s) -> ((minimumPrice <= s.getPrice()) &&
-                                (s.getPrice() <= maximumPrice)))
+                        (s.getPrice() <= maximumPrice)))
                 .collect(Collectors.toList());
     }
 
     /**
-     * Sorts equipment list using {@link EquipmentWeightComparator}
+     * Sorts equipment list by weight
      */
     public void sortEquipmentByWeight() {
-        equippedItems.sort(new EquipmentWeightComparator());
+        equippedItems.sort((Equipment o1, Equipment o2) -> {
+            if (o1.getWeight() > o2.getWeight()) {
+                return 1;
+            } else if (o1.getWeight() < o2.getWeight()) {
+                return -1;
+            } else {
+                return 0;
+            }
+        });
     }
 
     /*getters and setters*/
@@ -63,34 +73,74 @@ public class Knight {
         return equippedItems;
     }
 
+    /**
+     * Add new Head item to equipment
+     *
+     * @param head head equipment
+     */
     public void equipHead(Head head) {
         putEquipment(head);
     }
 
+    /**
+     * Removes existing head item from collection
+     *
+     * @return removed item
+     */
     public Head unequipHead() {
         return (Head) unequip(Head.class);
     }
 
+    /**
+     * Add new Torso item to equipment
+     *
+     * @param torso torso equipment
+     */
     public void equipTorso(Torso torso) {
         putEquipment(torso);
     }
 
+    /**
+     * Removes existing torso item from collection
+     *
+     * @return removed item
+     */
     public Torso unequipTorso() {
         return (Torso) unequip(Torso.class);
     }
 
+    /**
+     * Add new Arm item to equipment
+     *
+     * @param arm arm equipment
+     */
     public void equipArm(Arm arm) {
         putEquipment(arm);
     }
 
+    /**
+     * Removes existing arm item from collection
+     *
+     * @return removed item
+     */
     public Arm unequipArm() {
         return (Arm) unequip(Arm.class);
     }
 
+    /**
+     * Add new Leg item to equipment
+     *
+     * @param leg leg equipment
+     */
     public void equipLeg(Leg leg) {
         putEquipment(leg);
     }
 
+    /**
+     * Removes existing leg item from collection
+     *
+     * @return removed item
+     */
     public Leg uneqipLeg() {
         return (Leg) unequip(Leg.class);
     }

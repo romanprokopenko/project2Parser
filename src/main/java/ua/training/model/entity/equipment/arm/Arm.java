@@ -20,6 +20,14 @@ public class Arm extends Equipment {
      */
     private boolean itemInArm;
 
+    /**
+     * Constructor with parameters
+     *
+     * @param price price of item
+     * @param weight weight of item
+     * @param material item's material
+     * @param armType arm item type
+     */
     public Arm(double price, double weight, Material material, ArmType armType) {
         super(price, weight, material);
         this.armType = armType;

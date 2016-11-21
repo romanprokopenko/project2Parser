@@ -173,9 +173,7 @@ public class Knight {
     private Equipment unequip(Class<? extends Equipment> equipmentClass) {
         for (int i = 0; i < equippedItems.size(); i++) {
             if (equipmentClass.isAssignableFrom(equippedItems.get(i).getClass())) {
-                Equipment result = equippedItems.get(i);
-                equippedItems.remove(i);
-                return result;
+                return equippedItems.remove(i);
             }
         }
         String exceptionMessage = equipmentClass.getName() + " not equipped";

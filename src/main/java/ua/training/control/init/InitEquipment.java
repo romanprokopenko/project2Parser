@@ -12,7 +12,7 @@ import ua.training.model.entity.equipment.torso.Torso;
 import ua.training.model.entity.equipment.torso.TorsoType;
 
 /**
- * Created by Graffit on 17.11.2016.
+ * Created by Roman Prokopenko on 17.11.2016.
  */
 public enum InitEquipment {
     HEAD(new Head(13.99, 10, Material.LEATHER, HeadType.SALLET)),

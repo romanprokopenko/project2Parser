@@ -152,15 +152,16 @@ public class Knight {
      *
      * @param item item to put in collection
      */
-    private void putEquipment(Equipment item) {
+    private Equipment putEquipment(Equipment item) {
         for (int i = 0; i < equippedItems.size(); i++) {
             if (equippedItems.get(i).getClass().isInstance(item)
                     || item.getClass().isInstance(equippedItems.get(i))) {
-                equippedItems.set(i, item);
-                return;
+
+                return equippedItems.set(i, item);
             }
         }
         equippedItems.add(item);
+        return null;
     }
 
     /**

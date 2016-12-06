@@ -2,7 +2,6 @@ package ua.training.control;
 
 import ua.training.model.Model;
 import ua.training.model.ParserModel;
-import ua.training.model.entity.composite.Text;
 import ua.training.view.ParserView;
 import ua.training.view.View;
 
@@ -15,18 +14,21 @@ import java.io.IOException;
  * @author Roman Prokopenko
  */
 public class ParserControl implements Control {
+    /**
+     * Path to txt file from which text is read
+     */
     private static final String FILE_PATH = "test.txt";
     /**
      * Reference to model part
      *
-     * @see ParserModel
+     * @see Model
      */
     private Model model;
 
     /**
      * Reference to view part
      *
-     * @see ParserView
+     * @see View
      */
     private View view;
 

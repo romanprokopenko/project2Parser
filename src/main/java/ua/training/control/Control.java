@@ -1,8 +1,13 @@
 package ua.training.control;
 
 /**
- * Created by Graffit on 06.12.2016.
+ * Control interface
+ *
+ * @author Roman Prokopenko
  */
 public interface Control {
+    /**
+     * method which handle program work process
+     */
     void processUser();
 }

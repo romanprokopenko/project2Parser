@@ -9,13 +9,19 @@ import ua.training.model.textreader.TextReader;
 import java.io.IOException;
 
 /**
- * Class which used for business-logic purposes
+ * Implementation of {@link Model}
  *
  * @author Roman Prokopenko
  */
 public class ParserModel implements Model {
+    /**
+     * Reader of text from file
+     */
     private TextReader reader = new ParserTextReader();
 
+    /**
+     * Text processor
+     */
     private ElementOfText text = new Text();
 
     @Override

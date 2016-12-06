@@ -1,7 +1,9 @@
 package ua.training.model.entity;
 
 /**
- * Created by Graffit on 06.12.2016.
+ * Interface with regex constants
+ *
+ * @author Roman Prokopenko
  */
 public interface RegularExpression {
     String TEXT_REGEXP = "[-A-Za-zа-яА-ЯёЁ0-9,;()\\\"\\s]+[.?!]";

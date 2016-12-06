@@ -1,7 +1,9 @@
 package ua.training.model.entity;
 
 /**
- * Created by Graffit on 06.12.2016.
+ * Enum with types of groups of regex for sentence
+ *
+ * @author Roman Prokopenko
  */
 public enum SentenceElementType {
     WORD("word"), PUNCTUATION_MARK("punctuationMark");

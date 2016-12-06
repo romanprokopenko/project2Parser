@@ -1,8 +1,16 @@
 package ua.training.model.entity;
 
 /**
- * Created by Graffit on 06.12.2016.
+ * Composite elements interface
+ *
+ * @author Roman Prokopenko
  */
 public interface ElementOfText {
+
+    /**
+     * Method wich assembles composite element from String parameter
+     *
+     * @param text data that is needed to assemble the element
+     */
     void parse(String text);
 }

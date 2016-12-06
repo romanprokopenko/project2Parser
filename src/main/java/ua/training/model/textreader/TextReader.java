@@ -3,8 +3,17 @@ package ua.training.model.textreader;
 import java.io.IOException;
 
 /**
- * Created by Graffit on 06.12.2016.
+ * Text reader interface
+ *
+ * @author Roman Prokopenko
  */
 public interface TextReader {
+    /**
+     * Returns text from specified file
+     *
+     * @param filePath file path
+     * @return text from file as String
+     * @throws IOException reading exceptions
+     */
     String getTextFromFile(String filePath) throws IOException;
 }

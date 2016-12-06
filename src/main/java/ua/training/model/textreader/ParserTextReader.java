@@ -5,10 +5,20 @@ import java.nio.charset.Charset;
 import java.util.Objects;
 
 /**
- * Created by Graffit on 06.12.2016.
+ * textReader implementation
+ *
+ * @author Roman Prokopenko
  */
 public class ParserTextReader implements TextReader {
+
+    /**
+     * Exception String constants
+     */
     private static final String FILE_NOT_EXISTS = "Specified file doesn't exist";
+
+    /**
+     * File encoding
+     */
     private static final String ENCODING = "UTF-8";
 
     @Override

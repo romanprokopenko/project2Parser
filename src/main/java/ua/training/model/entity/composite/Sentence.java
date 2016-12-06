@@ -5,16 +5,27 @@ import ua.training.model.entity.SentenceElementType;
 import ua.training.model.entity.leaf.LeafFactory;
 import ua.training.model.entity.RegularExpression;
 import ua.training.model.entity.leaf.Word;
+import ua.training.model.entity.leaf.PunctuationMark;
 
 import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 /**
- * Created by Graffit on 06.12.2016.
+ * Implementation of {@link AbstractCompositeElementOfText}
+ * Represents sentence level of composite
+ *
+ * @author Roman Prokopenko
  */
 public class Sentence extends AbstractCompositeElementOfText {
 
+    /**
+     * Parses through currentCompositeText using {@link RegularExpression}.
+     * Creates new {@link Word} and {@link PunctuationMark}
+     * objects
+     *
+     * @param currentCompositeText
+     */
     @Override
     public void parse(String currentCompositeText) {
         Pattern pattern = Pattern.compile(RegularExpression.SENTENCE_REGEXP);
@@ -35,6 +46,13 @@ public class Sentence extends AbstractCompositeElementOfText {
         swapListElements(this.subElements, firstIndex, secondIndex);
     }
 
+    /**
+     * Search for index of first appearance of {@link Word} element
+     * in list of sub elements
+     *
+     * @param list list of sub elements
+     * @return index
+     */
     int findFirstWordIndex(List<ElementOfText> list) {
         for (int i = 0; i < list.size(); i++) {
             if (list.get(i) instanceof Word) {
@@ -44,6 +62,13 @@ public class Sentence extends AbstractCompositeElementOfText {
         return -1;
     }
 
+    /**
+     * Search for index of last appearance of {@link Word} element
+     * in list of sub elements
+     *
+     * @param list list of sub elements
+     * @return index
+     */
     int findLastWordIndex(List<ElementOfText> list) {
         for (int i = list.size() - 1; i >= 0; i--) {
             if (list.get(i) instanceof Word) {
@@ -53,6 +78,13 @@ public class Sentence extends AbstractCompositeElementOfText {
         return -1;
     }
 
+    /**
+     * Swaps two elements of list
+     *
+     * @param list        list
+     * @param firstIndex  index of first element
+     * @param secondIndex index of second element
+     */
     void swapListElements(List list, int firstIndex, int secondIndex) {
         Object tmp = list.get(firstIndex);
         list.set(firstIndex, list.get(secondIndex));

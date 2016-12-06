@@ -6,15 +6,26 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Created by Graffit on 06.12.2016.
+ * Class which represents abstract composite
+ *
+ * @author Roman Prokopenko
  */
 public abstract class AbstractCompositeElementOfText implements ElementOfText {
-//    protected String currentCompositeText;
+
+    /**
+     * List of sub elements of composite
+     * Sub elements must implement {@link ElementOfText}
+     */
     protected List<ElementOfText> subElements = new ArrayList<>();
 
     @Override
     public abstract void parse(String text);
 
+    /**
+     * Calls toString() of all sub elements
+     *
+     * @return
+     */
     @Override
     public String toString() {
         StringBuilder stringBuilder = new StringBuilder();

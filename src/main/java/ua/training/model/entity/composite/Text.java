@@ -7,10 +7,19 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 /**
- * Created by Graffit on 06.12.2016.
+ * Implementation of {@link AbstractCompositeElementOfText}
+ * Represents text (highest) level of composite
+ *
+ * @author Roman Prokopenko
  */
 public class Text extends AbstractCompositeElementOfText {
 
+    /**
+     * Parses through currentCompositeText using {@link RegularExpression}.
+     * Creates new {@link Sentence} objects
+     *
+     * @param currentCompositeText text to parse
+     */
     @Override
     public void parse(String currentCompositeText) {
         Pattern pattern = Pattern.compile(RegularExpression.TEXT_REGEXP);

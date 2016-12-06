@@ -1,12 +1,12 @@
 package ua.training.model;
 
+import java.io.IOException;
 
 /**
- * Class which used for business-logic purposes
- *
- * @author Roman Prokopenko
+ * Created by Graffit on 06.12.2016.
  */
-public class Model {
+public interface Model {
+    String getText(String filePath) throws IOException;
 
+    String processText(String text);
 }
-

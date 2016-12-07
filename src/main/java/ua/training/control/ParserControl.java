@@ -45,8 +45,11 @@ public class ParserControl implements Control {
 
     @Override
     public void processUser() {
+        System.out.println(View.START_MESSAGE + FILE_PATH);
         try {
-            view.printMessage(model.processText(model.getText(FILE_PATH)));
+            String data = model.getText(FILE_PATH);
+            System.out.println(View.END_MESSAGE);
+            System.out.println(model.processText(data));
         } catch (IOException e) {
             e.printStackTrace();
         }

@@ -8,6 +8,7 @@ import ua.training.model.entity.leaf.Word;
 import ua.training.model.entity.leaf.PunctuationMark;
 
 import java.util.List;
+import java.util.ListIterator;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -41,9 +42,36 @@ public class Sentence extends AbstractCompositeElementOfText {
             }
         }
 
+        /*after sentence assembled, we can remove program listing*/
+        for (int i = 0; i < subElements.size(); i++) {
+            if (subElements.get(i).toString().matches(RegularExpression.CODE_START_REGEXP)) {
+                removeElementsToEndLine(subElements, i);
+            }
+        }
+
+        /*after removing source code we can start swapping last and first words*/
         int firstIndex = findFirstWordIndex(this.subElements);
         int secondIndex = findLastWordIndex(this.subElements);
         swapListElements(this.subElements, firstIndex, secondIndex);
+    }
+
+
+    /**
+     * Removes all elements from specified list from specified position
+     * until "\n" appears
+     *
+     * @param list  list
+     * @param index position
+     */
+    void removeElementsToEndLine(List<ElementOfText> list, int index) {
+        ListIterator<ElementOfText> listIterator = list.listIterator(index);
+        while (listIterator.hasNext()) {
+            if (listIterator.next().toString().equals("\n")) {
+                break;
+            } else {
+                listIterator.remove();
+            }
+        }
     }
 
     /**

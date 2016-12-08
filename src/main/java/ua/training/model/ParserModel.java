@@ -38,13 +38,18 @@ public class ParserModel implements Model {
 
     @Override
     public String processText(String inputText) {
-        this.text.parse(inputText);
+        this.text.parse(clearSpaces(inputText));
         for (ElementOfText element :
                 this.text.getSubElements()) {
             removeCode((Sentence) element);
             swapFirstLastWord((Sentence) element);
         }
         return this.text.toString();
+    }
+
+    String clearSpaces(String input) {
+        String replacement = " ";
+        return input.replaceAll(RegularExpression.CLEAR_SPACES_PATTERN, replacement);
     }
 
     /**

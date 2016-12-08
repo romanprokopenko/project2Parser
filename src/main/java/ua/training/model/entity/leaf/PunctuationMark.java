@@ -13,7 +13,7 @@ public class PunctuationMark implements ElementOfText {
     /**
      * String that contains punctuation mark
      */
-    private String punctuationSymbol;
+    private char punctuationSymbol;
 
     /**
      * Default constructor
@@ -37,12 +37,12 @@ public class PunctuationMark implements ElementOfText {
      */
     @Override
     public void parse(String punctuationSymbol) {
-        this.punctuationSymbol = punctuationSymbol;
+        this.punctuationSymbol = punctuationSymbol.charAt(0);
     }
 
     @Override
     public String toString() {
-        return punctuationSymbol;
+        return String.valueOf(punctuationSymbol);
     }
 
     @Override
@@ -52,12 +52,12 @@ public class PunctuationMark implements ElementOfText {
 
         PunctuationMark that = (PunctuationMark) o;
 
-        return punctuationSymbol.equals(that.punctuationSymbol);
+        return punctuationSymbol == that.punctuationSymbol;
 
     }
 
     @Override
     public int hashCode() {
-        return punctuationSymbol.hashCode();
+        return (int) punctuationSymbol;
     }
 }

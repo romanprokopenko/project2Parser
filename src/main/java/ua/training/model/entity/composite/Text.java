@@ -30,6 +30,4 @@ public class Text extends AbstractCompositeElementOfText {
             this.subElements.add(sentence);
         }
     }
-
-
 }

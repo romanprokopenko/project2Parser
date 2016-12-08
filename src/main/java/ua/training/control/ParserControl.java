@@ -17,7 +17,7 @@ public class ParserControl implements Control {
     /**
      * Path to txt file from which text is read
      */
-    private static final String FILE_PATH = "test.txt";
+    private static final String FILE_PATH = "input.txt";
     /**
      * Reference to model part
      *

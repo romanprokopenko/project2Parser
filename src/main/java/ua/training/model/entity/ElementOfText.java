@@ -8,7 +8,7 @@ package ua.training.model.entity;
 public interface ElementOfText {
 
     /**
-     * Method wich assembles composite element from String parameter
+     * Method which assembles composite element from String parameter
      *
      * @param text data that is needed to assemble the element
      */

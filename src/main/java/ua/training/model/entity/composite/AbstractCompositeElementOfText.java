@@ -21,6 +21,10 @@ public abstract class AbstractCompositeElementOfText implements ElementOfText {
     @Override
     public abstract void parse(String text);
 
+    public List<ElementOfText> getSubElements() {
+        return subElements;
+    }
+
     /**
      * Calls toString() of all sub elements
      *

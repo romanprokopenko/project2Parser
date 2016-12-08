@@ -25,7 +25,7 @@ public class Sentence extends AbstractCompositeElementOfText {
      * Creates new {@link Word} and {@link PunctuationMark}
      * objects
      *
-     * @param currentCompositeText
+     * @param currentCompositeText text to form sentence
      */
     @Override
     public void parse(String currentCompositeText) {
@@ -41,81 +41,5 @@ public class Sentence extends AbstractCompositeElementOfText {
                 this.subElements.add(punctuationMark);
             }
         }
-
-        /*after sentence assembled, we can remove program listing*/
-        for (int i = 0; i < subElements.size(); i++) {
-            if (subElements.get(i).toString().matches(RegularExpression.CODE_START_REGEXP)) {
-                removeElementsToEndLine(subElements, i);
-            }
-        }
-
-        /*after removing source code we can start swapping last and first words*/
-        int firstIndex = findFirstWordIndex(this.subElements);
-        int secondIndex = findLastWordIndex(this.subElements);
-        swapListElements(this.subElements, firstIndex, secondIndex);
-    }
-
-
-    /**
-     * Removes all elements from specified list from specified position
-     * until "\n" appears
-     *
-     * @param list  list
-     * @param index position
-     */
-    void removeElementsToEndLine(List<ElementOfText> list, int index) {
-        ListIterator<ElementOfText> listIterator = list.listIterator(index);
-        while (listIterator.hasNext()) {
-            if (listIterator.next().toString().equals("\n")) {
-                break;
-            } else {
-                listIterator.remove();
-            }
-        }
-    }
-
-    /**
-     * Search for index of first appearance of {@link Word} element
-     * in list of sub elements
-     *
-     * @param list list of sub elements
-     * @return index
-     */
-    int findFirstWordIndex(List<ElementOfText> list) {
-        for (int i = 0; i < list.size(); i++) {
-            if (list.get(i) instanceof Word) {
-                return i;
-            }
-        }
-        return -1;
-    }
-
-    /**
-     * Search for index of last appearance of {@link Word} element
-     * in list of sub elements
-     *
-     * @param list list of sub elements
-     * @return index
-     */
-    int findLastWordIndex(List<ElementOfText> list) {
-        for (int i = list.size() - 1; i >= 0; i--) {
-            if (list.get(i) instanceof Word) {
-                return i;
-            }
-        }
-        return -1;
-    }
-
-    /**
-     * Swaps two elements of list
-     *
-     * @param list        list
-     * @param firstIndex  index of first element
-     * @param secondIndex index of second element
-     */
-    void swapListElements(List list, int firstIndex, int secondIndex) {
-        Object tmp = list.get(firstIndex);
-        list.set(firstIndex, list.get(secondIndex));
-        list.set(secondIndex, tmp);
     }
 }

@@ -24,35 +24,4 @@ public class SentenceTest {
         sentence.parse(testString);
     }
 
-    @Test
-    public void findFirstWordIndex() throws Exception {
-        int actualIndex = sentence.findFirstWordIndex(sentence.subElements);
-        int expectedIndex = 0;
-        Assert.assertEquals(expectedIndex, actualIndex);
-    }
-
-    @Test
-    public void findLastWordIndex() throws Exception {
-        int actualIndex = sentence.findLastWordIndex(sentence.subElements);
-        int expectedIndex = sentence.subElements.size() - 3;
-        Assert.assertEquals(expectedIndex, actualIndex);
-    }
-
-    @Test
-    public void swapListElements() throws Exception {
-        String testString = "видимости время наследования возможно" +
-                " изменения модификаторов доступа в сторону большей Во;.";
-        Sentence tmpSentence = new Sentence();
-        tmpSentence.parse(testString);
-        List<ElementOfText> expectedList = tmpSentence.subElements;
-
-        int firstIndex = sentence.findFirstWordIndex(sentence.subElements);
-        int lastIndex = sentence.findLastWordIndex(sentence.subElements);
-        sentence.swapListElements(sentence.subElements, firstIndex, lastIndex);
-        List<ElementOfText> actualList = sentence.subElements;
-
-        Assert.assertEquals(expectedList, actualList);
-
-    }
-
 }

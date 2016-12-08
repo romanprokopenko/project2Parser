@@ -1,8 +1,6 @@
 package ua.training.control;
 
 import ua.training.model.Model;
-import ua.training.model.ParserModel;
-import ua.training.view.ParserView;
 import ua.training.view.View;
 
 import java.io.IOException;
@@ -48,8 +46,8 @@ public class ParserControl implements Control {
         System.out.println(View.START_MESSAGE + FILE_PATH);
         try {
             String data = model.getText(FILE_PATH);
-            System.out.println(View.END_MESSAGE);
-            System.out.println(model.processText(data));
+            view.printMessage(View.END_MESSAGE);
+            view.printMessage(model.processText(data));
         } catch (IOException e) {
             e.printStackTrace();
         }

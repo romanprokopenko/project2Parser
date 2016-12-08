@@ -16,11 +16,14 @@ import static org.junit.Assert.*;
 public class ParserModelTest {
     Sentence sentence;
     ParserModel model;
+    String codeString;
 
     @Before
     public void init() {
         String testString = "Во время наследования возможно изменения" +
                 " модификаторов доступа в сторону большей видимости;.";
+        codeString = "Во время наследования возможно изменения" +
+                " модификаторов доступа в int x = 0; сторону большей видимости;.";
         sentence = new Sentence();
         sentence.parse(testString);
         model = new ParserModel();
@@ -28,12 +31,20 @@ public class ParserModelTest {
 
     @Test
     public void removeCode() throws Exception {
-
+        Sentence codeSentence = new Sentence();
+        codeSentence.parse(codeString);
+        model.removeCode(codeSentence);
+        String expectedString = "Во время наследования возможно изменения" +
+                " модификаторов доступа в ";
+        Assert.assertEquals(expectedString, codeSentence.toString());
     }
 
     @Test
     public void removeElementsToEndLine() throws Exception {
-
+        model.removeElementsToEndLine(sentence.getSubElements(), 3, "\n");
+        Sentence test = new Sentence();
+        test.parse("Во время");
+        Assert.assertEquals(test.getSubElements(), sentence.getSubElements());
     }
 
     @Test

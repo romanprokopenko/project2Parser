@@ -11,4 +11,5 @@ public interface RegularExpression {
             "(?<" + SentenceElementType.PUNCTUATION_MARK + ">[-\\s,;={}\\[\\]()-\\.?!\\\"]{1,1})";
     String CODE_START_REGEXP = "^(abstract|boolean|byte|case|catch|char|class|continue|" +
             "default|do|double|else|extends|int)$";
+    String CLEAR_SPACES_PATTERN = "[\\s]{2,}";
 }

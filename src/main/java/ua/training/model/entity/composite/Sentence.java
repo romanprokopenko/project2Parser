@@ -7,8 +7,6 @@ import ua.training.model.entity.RegularExpression;
 import ua.training.model.entity.leaf.Word;
 import ua.training.model.entity.leaf.PunctuationMark;
 
-import java.util.List;
-import java.util.ListIterator;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 

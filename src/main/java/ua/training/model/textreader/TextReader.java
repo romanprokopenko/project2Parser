@@ -15,5 +15,5 @@ public interface TextReader {
      * @return text from file as String
      * @throws IOException reading exceptions
      */
-    String getTextFromFile(String filePath) throws IOException;
+    String getTextFromSource(String filePath) throws IOException;
 }

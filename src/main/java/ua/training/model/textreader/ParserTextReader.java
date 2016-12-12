@@ -22,7 +22,7 @@ public class ParserTextReader implements TextReader {
     private static final String ENCODING = "UTF-8";
 
     @Override
-    public String getTextFromFile(String filePath) throws IOException {
+    public String getTextFromSource(String filePath) throws IOException {
         Objects.requireNonNull(filePath);
         File file = new File(getClass().getResource(filePath).getPath());
         StringBuilder result = new StringBuilder();

@@ -1,5 +1,7 @@
 package ua.training.model.entity.leaf;
 
+import ua.training.model.entity.ElementOfText;
+
 import java.util.HashMap;
 import java.util.Map;
 
@@ -11,14 +13,10 @@ import java.util.Map;
 public abstract class LeafFactory {
 
     /**
-     * Map of already created {@link Word} objects
+     * Map of already created leaves
      */
-    private static Map<String, Word> words = new HashMap<>();
+    private static Map<String, ElementOfText> leaves = new HashMap<>();
 
-    /**
-     * Map of already created {@link PunctuationMark} objects
-     */
-    private static Map<String, PunctuationMark> punctuationMarks = new HashMap<>();
 
     /**
      * Checks if there is the same Word in Map.
@@ -28,8 +26,8 @@ public abstract class LeafFactory {
      * @return reference to Word object
      */
     public static Word createWord(String wordText) {
-        words.putIfAbsent(wordText, new Word(wordText));
-        return words.get(wordText);
+        leaves.putIfAbsent(wordText, new Word(wordText));
+        return (Word) leaves.get(wordText);
     }
 
     /**
@@ -39,8 +37,8 @@ public abstract class LeafFactory {
      * @param punctuationMarkSymbol text of punctuation mark
      * @return reference to PunctuationMark object
      */
-    public static PunctuationMark createPunctuationMark(String punctuationMarkSymbol) {
-        punctuationMarks.putIfAbsent(punctuationMarkSymbol, new PunctuationMark(punctuationMarkSymbol));
-        return punctuationMarks.get(punctuationMarkSymbol);
-    }
+     public static PunctuationMark createPunctuationMark(String punctuationMarkSymbol) {
+            leaves.putIfAbsent(punctuationMarkSymbol, new PunctuationMark(punctuationMarkSymbol));
+            return (PunctuationMark) leaves.get(punctuationMarkSymbol);
+     }
 }

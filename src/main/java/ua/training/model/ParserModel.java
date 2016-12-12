@@ -33,7 +33,7 @@ public class ParserModel implements Model {
 
     @Override
     public String getText(String filePath) throws IOException {
-        return reader.getTextFromFile(filePath);
+        return reader.getTextFromSource(filePath);
     }
 
     @Override

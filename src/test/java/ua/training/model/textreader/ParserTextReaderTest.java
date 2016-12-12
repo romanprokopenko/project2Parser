@@ -4,8 +4,6 @@ import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
-import static org.junit.Assert.*;
-
 /**
  * Created by Roman Prokopenko on 07.12.2016.
  */
@@ -31,7 +29,7 @@ public class ParserTextReaderTest {
     @Test
     public void getTextFromFileTest() throws Exception {
         TextReader textReader = new ParserTextReader();
-        Assert.assertEquals(expectedText,textReader.getTextFromFile(filePath));
+        Assert.assertEquals(expectedText,textReader.getTextFromSource(filePath));
     }
 
 }

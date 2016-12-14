@@ -28,7 +28,7 @@ public abstract class AbstractCompositeElementOfText implements ElementOfText {
     /**
      * Calls toString() of all sub elements
      *
-     * @return
+     * @return string of all sub elements
      */
     @Override
     public String toString() {
